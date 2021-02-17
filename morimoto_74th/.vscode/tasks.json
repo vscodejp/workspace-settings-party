@@ -1,0 +1,41 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "generate openapi",
+      "command": [
+        "python",
+        "-m",
+        "invoke",
+        "generate-openapi-api",
+        "generate-openapi-front"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "problemMatcher": [],
+      "label": "cloud_sql_proxy dev",
+      "command": [
+        "cloud_sql_proxy",
+        "-instances=hoge-hoge-gcp-project:asia-northeast1:hoge-console=tcp:3306"
+      ],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "type": "npm",
+      "script": "watch:webpack",
+      "path": "front/",
+      "group": "build",
+      "problemMatcher": [],
+      "label": "npm: watch:webpack - front",
+      "detail": "webpack-cli -w",
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}

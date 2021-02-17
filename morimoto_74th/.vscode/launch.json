@@ -1,0 +1,28 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "api",
+      "type": "python",
+      "request": "launch",
+      "module": "hermes_console_api",
+      "envFile": "${workspaceFolder}/api-secrets.env",
+      "env": {
+        "GCLOUD_PROJECT": "hoge-hoge-gcp-project",
+        "USERS_LIST": "./data/users_dev.csv",
+        "PASSWORD_HASH_SALT": "hoge-dev"
+      }
+    },
+    {
+      "name": "frontend",
+      "request": "launch",
+      "type": "pwa-chrome",
+      "url": "http://localhost:8081/",
+      "webRoot": "${workspaceFolder}/public",
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${workspaceFolder}/front/*"
+      }
+    }
+  ]
+}

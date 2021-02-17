@@ -1,0 +1,50 @@
+{
+  "files.exclude": {
+    ".venv": true,
+    "node_modules": true,
+    "front/node_modules": true
+  },
+  "files.watcherExclude": {
+    ".venv": true,
+    "node_modules": true,
+    "front/node_modules": true
+  },
+  "search.exclude": {
+    ".venv": true,
+    "_openapi_generated_api": true
+  },
+  "python.linting.mypyEnabled": false,
+  "editor.codeLens": true,
+  "python.testing.pytestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.unittestEnabled": true,
+  "python.analysis.typeCheckingMode": "strict",
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./hermes_console_api_test",
+    "-p",
+    "test_*.py"
+  ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.fixAll.prettier": true
+    }
+  },
+  "[python]": {
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
+      "docker-compose.yml"
+    ]
+  }
+}
