@@ -1,0 +1,24 @@
+{
+    // PythonのPATHをワークスペースの仮想環境にする
+    "python.pythonPath": "${workspaceFolder}/venv/bin/python",
+    // 仮想環境にインストールしたファイルは監視対象から除外する
+    "files.watcherExclude": {
+        "**/venv/**": true
+    },
+    // リンタでPyLintは使わない
+    "python.linting.pylintEnabled": false,
+    // リンタでFlake8を使う
+    "python.linting.flake8Enabled": true,
+    // コードフォーマッタでBlackを使う
+    "python.formatting.provider": "black",
+    // Blackは貼り付け時の整形に対応していないので無効にする
+    "editor.formatOnPaste": false,
+    // 1行の文字数を88文字とする
+    "python.linting.flake8Args": ["--max-line-length", "88"],
+    // Pylanceの型チェックをbasicにする
+    "python.analysis.typeCheckingMode": "basic",
+    // Pylanceの括弧補完を有効にする
+    "python.analysis.completeFunctionParens": true,
+    // Python Docstring GeneratorのフォーマットをSphinx形式にする
+    "autoDocstring.docstringFormat": "sphinx",
+}
