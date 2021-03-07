@@ -1,0 +1,63 @@
+{
+    "workbench.startupEditor": "newUntitledFile", // VSCode起動時にUntitledの新規ファイルを表示
+
+    "editor.formatOnType": true, // 最後にセミコロンを打つとスペースなどを綺麗にしてくれるらしい
+    "editor.suggestSelection": "first", // 入力候補の1番目を最初に選択しておく
+    "editor.renderControlCharacters": true, // 制御文字を表示させる
+
+    "emmet.includeLanguages": { // デフォルトではサポートされないEmmetを適用させる
+        "erb": "html",
+        "vue": "html",
+        "vue": "css",
+    },
+
+    // 拡張機能
+    //// Visual Studio IntelliCode
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue", // suggestSelectionの設定を上書きさせる
+
+    //// Trailling Spaces
+    "trailing-spaces.trimOnSave": true, // 上書き保存したときに文末のスペースを削除
+
+    //// Python
+    "python.jediEnabled": false, // 変わったかも？PythonのIntelliSenseのエンジンにJediを使うか
+    "python.languageServer": "Microsoft",
+
+    //// JS Beautify
+    "beautify.config": "", // 独自設定ファイルへのパス
+
+    // 言語
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "[css]": {
+        "editor.defaultFormatter": "aeschli.vscode-css-formatter"
+    },
+
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+
+    "dart.flutterSdkPath": "/Users/takuya/Development/flutter",
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": false
+    },
+
+}
