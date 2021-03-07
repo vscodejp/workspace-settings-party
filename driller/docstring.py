@@ -3,13 +3,8 @@
 
 
 def func(i: int, s: str) -> str:
-    """[summary]
-
-    :param i: [description]
-    :type i: int
-    :param s: [description]
-    :type s: str
-    :return: [description]
-    :rtype: str
-    """
+    # Generate Docstring (Ctrl+Shift+2) でDocstringが自動生成される
     return s * i
+
+
+func(3, "a")

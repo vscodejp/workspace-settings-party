@@ -21,4 +21,12 @@
     "python.analysis.completeFunctionParens": true,
     // Python Docstring GeneratorのフォーマットをSphinx形式にする
     "autoDocstring.docstringFormat": "sphinx",
+    // テストフレームワークをpytestにする
+    "python.testing.pytestEnabled": true,
+    // テスト時のワークディレクトリをワークスペースにする
+    "python.testing.cwd": "${workspaceFolder}",
+    // pytestの引数を指定する
+    "python.testing.pytestArgs": [
+        "."
+    ],
 }
