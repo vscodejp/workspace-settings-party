@@ -20,3 +20,4 @@ Ansible の Playobook 作成
 
 - ansible-lint 5.x への対応
 - syntax-check の改善
+- ansible 2.10 への対応
