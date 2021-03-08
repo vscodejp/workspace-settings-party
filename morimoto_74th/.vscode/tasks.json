@@ -2,6 +2,8 @@
   "version": "2.0.0",
   "tasks": [
     {
+      // タスクランナー自体は、PythonのInvokeを利用
+      // よく使うコマンドのみ、VS Codeのタスクとして定義
       "type": "shell",
       "label": "generate openapi",
       "command": [
@@ -14,6 +16,7 @@
       "problemMatcher": []
     },
     {
+      // DB は GCP の CloudSQL を使用
       "type": "shell",
       "problemMatcher": [],
       "label": "cloud_sql_proxy dev",
@@ -21,18 +24,23 @@
         "cloud_sql_proxy",
         "-instances=hoge-hoge-gcp-project:asia-northeast1:hoge-console=tcp:3306"
       ],
+      // VS Codeを立ち上げたときに、自動で起動する
       "runOptions": {
         "runOn": "folderOpen"
       }
     },
     {
+      // フロントエンドのビルドが自動で動作するようになる
+      // フロントエンドのタスクランナーはあくまでnpmを使う
       "type": "npm",
       "script": "watch:webpack",
+      // フロントエンドディレクトリのpackage.jsonを対象にする
       "path": "front/",
       "group": "build",
       "problemMatcher": [],
       "label": "npm: watch:webpack - front",
       "detail": "webpack-cli -w",
+      // VS Codeを立ち上げたときに、自動で起動する
       "runOptions": {
         "runOn": "folderOpen"
       }

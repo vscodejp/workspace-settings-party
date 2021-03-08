@@ -1,10 +1,16 @@
 {
   "recommendations": [
+    // Python
     "ms-python.python",
+    // Pylance
     "ms-python.vscode-pylance",
+    // Test View
     "hbenl.vscode-test-explorer",
+    // Prettier
     "esbenp.prettier-vscode",
+    // EditorConfig
     "EditorConfig.EditorConfig",
+    // Chrome
     "msjsdiag.debugger-for-chrome"
   ]
 }

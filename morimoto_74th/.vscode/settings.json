@@ -1,4 +1,5 @@
 {
+  // Explorer Viewに表示しない
   "files.exclude": {
     ".venv": true,
     "node_modules": true,
@@ -13,14 +14,20 @@
     ".venv": true,
     "_openapi_generated_api": true
   },
+
+  // リンターは Pylance を使う
   "python.linting.mypyEnabled": false,
+  "python.analysis.typeCheckingMode": "strict",
+
+  // black で自動フォーマット
+  "python.formatting.provider": "black",
+  "editor.formatOnSave": true,
+
+  // UT には unittest を使う
   "editor.codeLens": true,
   "python.testing.pytestEnabled": false,
   "python.testing.nosetestsEnabled": false,
   "python.testing.unittestEnabled": true,
-  "python.analysis.typeCheckingMode": "strict",
-  "python.formatting.provider": "black",
-  "editor.formatOnSave": true,
   "python.testing.unittestArgs": [
     "-v",
     "-s",
@@ -28,23 +35,36 @@
     "-p",
     "test_*.py"
   ],
+
   "[typescript]": {
+    // プロジェクト内に Type Script と Python があるため
+    // Type Script のフォーマッタを指定
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+    // ユーザ設定に負けることがあったので、フォーマットを強制
     "editor.formatOnSave": true,
+
+    // ESLint、Prettier レベルは強制修正
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true,
       "source.fixAll.prettier": true
     }
   },
   "[python]": {
+    // ユーザ設定に負けることがあったので、フォーマットを強制
     "editor.formatOnSave": true
   },
   "[typescriptreact]": {
+    // React だけフォーマットされないと思ったら、これが必要だった
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "yaml.schemas": {
+    // コンテナビルド時のイメージ名の指定のために、
+    // docker-compose を利用
     "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json": [
       "docker-compose.yml"
     ]
   }
+  // メモ
+  // タブサイズ、SPACEを利用する設定などは、Editor Config で設定し、VS Codeの設定には現れない
 }

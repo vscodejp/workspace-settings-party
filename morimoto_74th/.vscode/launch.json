@@ -2,10 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      // API のデバッグ実行
       "name": "api",
       "type": "python",
       "request": "launch",
+      // モジュールの起動になっている
       "module": "hermes_console_api",
+      // シークレット類は、envFileを使って共有して、コミットはしない
       "envFile": "${workspaceFolder}/api-secrets.env",
       "env": {
         "GCLOUD_PROJECT": "hoge-hoge-gcp-project",
@@ -14,11 +17,15 @@
       }
     },
     {
+      // フロントエンドのデバッグ実行
       "name": "frontend",
       "request": "launch",
+      // なぜ PWA（プログレッシブウェブアプリ）なのか不明
+      // 一時これでないと動かない時があった
       "type": "pwa-chrome",
       "url": "http://localhost:8081/",
       "webRoot": "${workspaceFolder}/public",
+      // Type Script まわり
       "sourceMaps": true,
       "sourceMapPathOverrides": {
         "webpack:///./*": "${workspaceFolder}/front/*"
