@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+      // Python
+      "ms-python.python",
+      // Pylance
+      "ms-python.vscode-pylance",
+      // Python Docstring Generator
+      "njpwerner.autodocstring",
+      // Python Preview
+      "dongli.python-preview"
+    ]
+  }
