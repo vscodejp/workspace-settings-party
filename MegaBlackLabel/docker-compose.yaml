@@ -1,0 +1,46 @@
+version: '3.2'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-container
+    ports:
+      - '4563-4584:4563-4584'
+    environment:
+      - SERVICES=s3
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_OUTPUT=json
+    volumes:
+      - 'localstack:/tmp/localstack'
+      - '/var/run/docker.sock:/var/run/docker.sock'
+    networks:
+      - localstack-local
+  awscli:
+    image: amazon/aws-cli:latest
+    container_name: 'awscli'
+    environment:
+      - SERVICES=s3
+      - DATA_DIR=/tmp/localstack/data
+      - AWS_ACCESS_KEY_ID=dummy
+      - AWS_SECRET_ACCESS_KEY=dummy
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_OUTPUT=json
+    volumes:
+      - '/home/vscode/.aws:/root/.aws'
+      - '/home/vscode/pdf:/aws/pdf'
+    entrypoint:
+      - /bin/sh
+    tty: true
+    depends_on:
+      - localstack
+    networks:
+      - localstack-local
+
+volumes:
+  localstack:
+    driver: 'local'
+networks:
+  localstack-local:
+    external: true

@@ -1,0 +1,109 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "localstack: start",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": [
+                "up",
+                "-d"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "localstack: stop",
+            "type": "shell",
+            "command": "docker-compose",
+            "args": [
+                "down",
+                "-v"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "sam build: pdf-conv-app",
+            "type": "shell",
+            "command": "sam",
+            "args": [
+                "build",
+                "-t",
+                "/go/sam/src/pdf-conv-app/template.yaml",
+                "-b",
+                "/go/sam/src/pdf-conv-app/.aws-sam/build"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "sam local start-api: pdf-conv-app",
+            "type": "shell",
+            "command": "sam",
+            "args": [
+                "local",
+                "start-api",
+                "-t",
+                "/go/sam/src/pdf-conv-app/.aws-sam/build/template.yaml",
+                "--env-vars",
+                "/go/sam/src/pdf-conv-app/env.json",
+                "--docker-network",
+                "localstack-local"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "sam local invoke: pdf-conv-app",
+            "type": "shell",
+            "command": "sam",
+            "args": [
+                "local",
+                "invoke",
+                "-t",
+                "/go/sam/src/pdf-conv-app/.aws-sam/build/template.yaml",
+                "--env-vars",
+                "/go/sam/src/pdf-conv-app/env.json",
+                "--docker-network",
+                "localstack-local"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+        },
+        {
+            "label": "aws cli: login",
+            "type": "shell",
+            "command": "docker",
+            "args": [
+                "exec",
+                "-i",
+                "-t",
+                "awscli",
+                "bash"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
