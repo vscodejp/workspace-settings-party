@@ -1,0 +1,29 @@
+{
+    "python.pythonPath": "/Users/sakana/envs/venv/bin/python",
+
+    // 拡張 Trigger Task on Save 用の設定
+    "triggerTaskOnSave.on": true,   // 有効
+    // ファイル保存時に実行するタスクの関連付け
+    "triggerTaskOnSave.tasks": {
+        "ansible-lint current file": [
+            "*.yml",
+            "*.yaml"
+        ],
+        "yamllint current file": [
+            "*.yml",
+            "*.yaml"
+        ],
+        "syntax-check current file": [
+            "*.yml",
+            "*.yaml"
+        ]
+    },
+
+    // 拡張 YAML で利用する JSON Schema
+    // おためし
+    "yaml.schemas": {
+        // Ansible 2.9 用 Schema
+        "/Users/sakana/work/schemas/ansible-playbook.json": ["*.yml"],
+        // "https://json.schemastore.org/ansible-playbook": ["*.yml"],  // サイズが大きい
+    }
+}

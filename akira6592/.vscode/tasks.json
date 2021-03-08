@@ -1,0 +1,103 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      // ansible-lint するタスクの定義
+      "label": "ansible-lint current file",
+      "type": "shell",
+      "command": "/Users/akira/envs/nwlab/bin/ansible-lint",
+      "args": [
+        "${file}",
+        "-p"     // 正規表現で切り取りやすい形式にする
+      ],
+      "detail": "現在開いているファイルを ansible-lint する",
+      "presentation": {
+        "reveal": "never",
+        // "revealProblems": "onProblem"
+      },
+      "problemMatcher": {
+        "owner": "ansible-lint",
+        "fileLocation": "autoDetect",
+        "pattern":[
+            {
+                // sample
+                // 01_show.yml:10: [E201] Trailing whitespace
+                "regexp": "^(.+):(\\d+): (.+)$",
+                "file": 1,
+                "line": 2,
+                "message": 3,
+            }
+          ],
+      },
+    },
+    {
+      // yamllint するタスクの定義
+      "label": "yamllint current file",
+      "type": "shell",
+      "command": "/Users/akira/envs/nwlab/bin/yamllint",
+      "args": [
+        "-f",
+        "parsable",     // 正規表現で切り取りやすい形式にする
+        "${file}",
+      ],
+      "detail": "現在開いているファイルを yamllint する",
+      "presentation": {
+        "reveal": "never",
+       // "revealProblems": "onProblem"
+      },
+      "problemMatcher": {
+        // タスク実行結果から「問題/Problem」の各項目に対応させるための正規表現
+        "owner": "yamlllint",
+        "fileLocation": "autoDetect",
+        "pattern":[
+            {
+                // sample
+                // /path/to/playbook/01_show.yml:8:1: [error] too many blank lines (8 > 0) (empty-lines)
+                "regexp": "^(.+):(\\d+):(\\d+): \\[(.+?)\\] (.+)$",
+                "file": 1,       // 各項目と後方参照のマッピング
+                "line": 2,
+                "column": 3,
+                "severity": 4,
+                "message": 5,
+            }
+          ],
+      },
+    },
+    {
+      // ansible-playbook syntax-check するタスクの定義
+      "label": "syntax-check current file",
+      "type": "shell",
+      "command": "/Users/akira/envs/nwlab/bin/ansible-playbook",
+      "args": [
+        "${file}",
+        "--syntax-check",
+      ],
+      "detail": "現在開いているファイルを --syntax-check する",
+      "presentation": {
+        "reveal": "never",
+        // "revealProblems": "onProblem"
+      },
+      
+      "problemMatcher": {
+        "owner": "ansible-playbook",
+        "fileLocation": "autoDetect",
+        "pattern":[
+          // {
+          //   "regexp": "^ERROR! (.+)$",   // うまく動かない
+          //   "message": 0
+          // },
+          {
+            "regexp": "^The error appears to be in '(.+)': line (\\d+), column (\\d+), .+$",
+            "file": 1,
+            "line": 2,
+            "column": 3,
+            "message": 0,
+            // "loop": true,
+          },
+        ],
+      },
+    }
+  ]
+}
